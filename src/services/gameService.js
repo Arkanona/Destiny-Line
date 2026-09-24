@@ -1,6 +1,7 @@
 const initialGame = { username: '', score: 0, sceneIndex: 0, crystalResult: null };
 
 export function getSavedGame() {
+  // BACK-END : remplacer localStorage par une récupération de la partie depuis l’API.
   try {
     return JSON.parse(localStorage.getItem('alter-ego-game')) || initialGame;
   } catch {
@@ -9,17 +10,19 @@ export function getSavedGame() {
 }
 
 export function startGame(username) {
+  // BACK-END : le serveur pourra créer une session et retourner un identifiant de partie.
   return { ...initialGame, username: username.trim() };
 }
 
 export function saveGame(game) {
-  // TODO: remplacer ce stockage local par un futur fetch('/api/games', ...).
+  // BACK-END : remplacer ce stockage local par un futur fetch('/api/games', ...).
+  // Le payload envoyé pourra contenir : { username, score, sceneIndex, crystalResult }.
   localStorage.setItem('alter-ego-game', JSON.stringify(game));
   return game;
 }
 
 export function getStats() {
-  // TODO: remplacer les données mockées par un futur fetch('/api/stats').
+  // BACK-END : remplacer les données mockées par un futur fetch('/api/stats').
   return { hero: 12, neutral: 8, villain: 5, total: 25 };
 }
 

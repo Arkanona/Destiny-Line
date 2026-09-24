@@ -1,0 +1,182 @@
+{
+  "project": "Destiny Line",
+  "version": 1,
+  "scoreRange": {
+    "min": -100,
+    "max": 100
+  },
+  "situations": [
+    {
+      "id": "bank-robbery",
+      "order": 1,
+      "title": "Braquage à la banque",
+      "description": "Des criminels braquent une banque. Des otages sont toujours à l’intérieur.",
+      "image": "/assets/bank.webp",
+      "heroChoice": {
+        "title": "Sauver les otages",
+        "description": "Protéger les civils et arrêter les criminels.",
+        "score": 20
+      },
+      "villainChoice": {
+        "title": "Prendre une partie de l’argent",
+        "description": "Laisser les otages et repartir avec le butin.",
+        "score": -20
+      }
+    },
+    {
+      "id": "defeated-enemy",
+      "order": 2,
+      "title": "Ennemi vaincu",
+      "description": "Après un combat difficile, ton adversaire est à terre et ne peut plus se défendre.",
+      "image": "/assets/enemy.webp",
+      "heroChoice": {
+        "title": "Le remettre aux autorités",
+        "description": "Choisir la justice plutôt que la vengeance.",
+        "score": 20
+      },
+      "villainChoice": {
+        "title": "Se venger",
+        "description": "Rendre le coup reçu, sans témoin.",
+        "score": -20
+      }
+    },
+    {
+      "id": "crystal-ball",
+      "order": 3,
+      "title": "La boule de cristal",
+      "description": "Une mystérieuse boule de cristal apparaît devant toi. Elle prétend pouvoir révéler ton avenir.",
+      "image": "/assets/crystal.webp",
+      "heroChoice": {
+        "title": "Toucher la boule",
+        "description": "Accepter de voir une vision lumineuse de ton avenir.",
+        "score": 15,
+        "resultMessage": "La boule révèle une vision lumineuse de ton avenir."
+      },
+      "villainChoice": {
+        "title": "Toucher la boule malgré le danger",
+        "description": "Forcer la vision pour découvrir un pouvoir interdit.",
+        "score": -15,
+        "resultMessage": "Une ombre inquiétante apparaît dans la vision."
+      }
+    },
+    {
+      "id": "city-in-danger",
+      "order": 4,
+      "title": "Ville en danger",
+      "description": "Un quartier est en danger, mais ton ennemi tente de s’enfuir.",
+      "image": "/assets/city.webp",
+      "heroChoice": {
+        "title": "Sauver les civils",
+        "description": "Mettre les habitants à l’abri en priorité.",
+        "score": 20
+      },
+      "villainChoice": {
+        "title": "Poursuivre le criminel",
+        "description": "Ne pas laisser ta cible s’échapper.",
+        "score": -20
+      }
+    },
+    {
+      "id": "absolute-power",
+      "order": 5,
+      "title": "Pouvoir absolu",
+      "description": "La ville souhaite faire de toi son protecteur officiel. Cette position pourrait aussi te permettre de la contrôler.",
+      "image": "/assets/power.webp",
+      "heroChoice": {
+        "title": "Protéger la ville",
+        "description": "Porter le symbole et servir ceux qui comptent sur toi.",
+        "score": 25
+      },
+      "villainChoice": {
+        "title": "Prendre le contrôle",
+        "description": "Utiliser ce pouvoir pour imposer ton propre ordre.",
+        "score": -25
+      }
+    },
+    {
+      "id": "school-threat",
+      "order": 6,
+      "title": "Menace au lycée",
+      "description": "Une alarme retentit dans ton lycée. Un groupe masqué retient plusieurs élèves dans le gymnase.",
+      "image": "/assets/school-threat.webp",
+      "heroChoice": {
+        "title": "Libérer les élèves",
+        "description": "Entrer discrètement pour mettre les otages en sécurité.",
+        "score": 20
+      },
+      "villainChoice": {
+        "title": "Négocier pour obtenir leurs secrets",
+        "description": "Profiter de la situation pour récupérer des informations.",
+        "score": -20
+      }
+    },
+    {
+      "id": "power-source",
+      "order": 7,
+      "title": "La source d’énergie",
+      "description": "Une source d’énergie instable pourrait alimenter toute la ville ou devenir une arme redoutable.",
+      "image": "/assets/power-source.webp",
+      "heroChoice": {
+        "title": "La désactiver",
+        "description": "Éviter une catastrophe, même si la ville perd une ressource importante.",
+        "score": 20
+      },
+      "villainChoice": {
+        "title": "La garder pour toi",
+        "description": "Conserver l’énergie afin de devenir plus puissant.",
+        "score": -20
+      }
+    },
+    {
+      "id": "public-trust",
+      "order": 8,
+      "title": "La confiance du public",
+      "description": "Les habitants veulent connaître ton identité. Les révéler pourrait les rassurer, mais aussi mettre tes proches en danger.",
+      "image": "/assets/public-trust.webp",
+      "heroChoice": {
+        "title": "Dire la vérité",
+        "description": "Assumer tes actes et accepter les conséquences publiquement.",
+        "score": 20
+      },
+      "villainChoice": {
+        "title": "Manipuler les médias",
+        "description": "Créer une fausse histoire pour garder le contrôle de ton image.",
+        "score": -20
+      }
+    },
+    {
+      "id": "rival-choice",
+      "order": 9,
+      "title": "Le rival",
+      "description": "Un autre justicier apparaît et gagne rapidement la confiance de la ville. Il te propose une alliance à ses conditions.",
+      "image": "/assets/rival-choice.webp",
+      "heroChoice": {
+        "title": "Partager le mérite",
+        "description": "Accepter de travailler ensemble pour protéger les habitants.",
+        "score": 20
+      },
+      "villainChoice": {
+        "title": "Saboter sa réputation",
+        "description": "Éliminer discrètement un concurrent devenu gênant.",
+        "score": -20
+      }
+    },
+    {
+      "id": "final-choice",
+      "order": 10,
+      "title": "La dernière ligne",
+      "description": "La ville est suspendue à ta décision. Tu peux devenir son symbole ou imposer définitivement ta propre vision.",
+      "image": "/assets/final-choice.webp",
+      "heroChoice": {
+        "title": "Sauver tout le monde",
+        "description": "Faire le sacrifice nécessaire pour protéger héros, civils et ennemis.",
+        "score": 25
+      },
+      "villainChoice": {
+        "title": "Régner sur les ruines",
+        "description": "Accepter le pouvoir et laisser la peur gouverner la ville.",
+        "score": -25
+      }
+    }
+  ]
+}
