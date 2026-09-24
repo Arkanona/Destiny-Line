@@ -16,3 +16,16 @@ npm run dev
 ```
 
 Le site sera disponible sur l’URL indiquée par Vite, généralement `http://localhost:5173`.
+
+## Configuration du back-end
+
+Copier `.env.example` vers `.env`, puis renseigner l’URL de l’API :
+
+```env
+VITE_API_URL=http://localhost:3000
+```
+
+Le front utilise ensuite les endpoints :
+
+- `POST /api/v1/auth/register`
+- `POST /api/v1/auth/login`

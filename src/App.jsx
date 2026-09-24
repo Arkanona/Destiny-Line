@@ -6,12 +6,12 @@ import Result from './pages/Result';
 import Stats from './pages/Stats';
 import Auth from './pages/Auth';
 import { getSavedGame, startGame } from './services/gameService';
-import { getCurrentUser, logoutUser } from './services/authService';
+import useAuthStore from './store/authStore';
 
 export default function App() {
   const navigate = useNavigate();
   const [game, setGame] = useState(() => getSavedGame());
-  const [user, setUser] = useState(() => getCurrentUser());
+  const { user, logout } = useAuthStore();
 
   useEffect(() => {
     // BACK-END : cette sauvegarde locale est temporaire. Synchroniser la partie avec l’API ici.
@@ -26,13 +26,12 @@ export default function App() {
   }
 
   function handleAuthenticated(session) {
-    setUser(session);
-    // BACK-END : remplacer la session localStorage par le token renvoyé par l’API.
+    // La session est déjà persistée par authStore. On garde ce callback pour une redirection future.
+    return session;
   }
 
   function handleLogout() {
-    logoutUser();
-    setUser(null);
+    logout();
     navigate('/');
   }
 

@@ -1,48 +1,32 @@
-const USERS_KEY = 'destiny-line-users';
-const SESSION_KEY = 'destiny-line-session';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
-function readUsers() {
+async function requestAuth(endpoint, payload) {
   try {
-    return JSON.parse(localStorage.getItem(USERS_KEY)) || [];
-  } catch {
-    return [];
+    const response = await fetch(`${API_URL}/api/v1/auth/${endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    const data = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(data.message || 'La requête d’authentification a échoué.');
+    }
+    return data;
+  } catch (error) {
+    if (error instanceof TypeError) {
+      throw new Error('Le serveur back-end est inaccessible. Vérifie VITE_API_URL et le serveur API.');
+    }
+    throw error;
   }
 }
 
-export function getCurrentUser() {
-  try {
-    return JSON.parse(localStorage.getItem(SESSION_KEY)) || null;
-  } catch {
-    return null;
-  }
+export function registerUser(userData) {
+  // BACK-END : endpoint attendu : POST /api/v1/auth/register.
+  return requestAuth('register', userData);
 }
 
-export function registerUser({ username, email, password }) {
-  const users = readUsers();
-  if (users.some((user) => user.email === email.toLowerCase())) {
-    throw new Error('Cette adresse e-mail est déjà utilisée.');
-  }
-
-  // FRONT MOCK : ne jamais stocker un mot de passe en clair en production.
-  // BACK-END : remplacer par POST /api/auth/register et laisser le serveur gérer le hash.
-  const user = { id: crypto.randomUUID(), username: username.trim(), email: email.toLowerCase(), password };
-  localStorage.setItem(USERS_KEY, JSON.stringify([...users, user]));
-  const session = { id: user.id, username: user.username, email: user.email };
-  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-  return session;
-}
-
-export function loginUser({ email, password }) {
-  const user = readUsers().find((candidate) => candidate.email === email.toLowerCase() && candidate.password === password);
-  if (!user) throw new Error('E-mail ou mot de passe incorrect.');
-
-  // BACK-END : remplacer par POST /api/auth/login et stocker le token retourné par l’API.
-  const session = { id: user.id, username: user.username, email: user.email };
-  localStorage.setItem(SESSION_KEY, JSON.stringify(session));
-  return session;
-}
-
-export function logoutUser() {
-  // BACK-END : appeler POST /api/auth/logout ou invalider le token côté serveur.
-  localStorage.removeItem(SESSION_KEY);
+export function loginUser(credentials) {
+  // BACK-END : endpoint attendu : POST /api/v1/auth/login.
+  return requestAuth('login', credentials);
 }
