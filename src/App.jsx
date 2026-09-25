@@ -5,6 +5,7 @@ import Game from './pages/Game';
 import Result from './pages/Result';
 import Stats from './pages/Stats';
 import Auth from './pages/Auth';
+import Loader from './components/Loader';
 import { getSavedGame, startGame } from './services/gameService';
 import useAuthStore from './store/authStore';
 
@@ -12,6 +13,12 @@ export default function App() {
   const navigate = useNavigate();
   const [game, setGame] = useState(() => getSavedGame());
   const { user, logout } = useAuthStore();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => setLoading(false), 5000);
+    return () => window.clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     // BACK-END : cette sauvegarde locale est temporaire. Synchroniser la partie avec l’API ici.
@@ -43,6 +50,8 @@ export default function App() {
     setGame((current) => startGame(current.username));
     navigate('/game');
   }
+
+  if (loading) return <Loader />;
 
   return (
     <Routes>

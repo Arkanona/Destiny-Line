@@ -1,0 +1,3 @@
+export default function Loader() {
+  return <main className="loader-screen" role="status" aria-live="polite" aria-label="Chargement de Destiny Line"><div className="loader-glow" /><div className="loader-content"><div className="loader-brand"><span>DESTINY</span> LINE</div><div className="dog-scene" aria-hidden="true"><img className="loader-dog-image" src="/assets/dog-superhero-pee.png" alt="" /><span className="loader-pee-fx"><i /><i /><i /></span><div className="loader-track"><span className="loader-fill" /><span className="loader-puddle" /></div></div><h1>Ton destin se prépare<span>…</span></h1><p>Le chien renifle les choix à venir.</p><div className="loader-progress-label"><span>CHARGEMENT</span><strong>100%</strong></div></div></main>;
+}
